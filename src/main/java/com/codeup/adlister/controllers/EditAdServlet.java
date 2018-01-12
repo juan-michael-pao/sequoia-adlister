@@ -32,6 +32,8 @@ public class EditAdServlet extends HttpServlet {
         long id = (long) request.getSession().getAttribute("id");
         String title = request.getParameter("title");
         String description = request.getParameter("description");
+        String[] categories = request.getParameterValues("category");
+
         Ad ad = DaoFactory.getAdsDao().showOneAd(id);
         User user = DaoFactory.getUsersDao().showUserInformation(ad.getUserId());
         User currentSessionUser = (User) request.getSession().getAttribute("user");
